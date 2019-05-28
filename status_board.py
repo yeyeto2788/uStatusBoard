@@ -5,7 +5,6 @@ It uses four (4) WS2812B (aka Neopixels) connected
 by default to pin 15 on the ESP8266
 
 -------------------------------
-|  _                          |
 | |_| LED 0  #################|
 |  _                          |
 | |_| LED 1  #################|
@@ -22,6 +21,16 @@ import urandom
 
 
 class StatusBoard:
+    """
+    StatusBoard object to handle all actions on the board.
+
+    Attributes:
+        pin (machine.Pin): Instantiated on pin 15 by default.
+        neopixels: Count of neopixels on the board (4 by default).
+        neostrip (neopixel.NeoPixel): Instance of NeoPixel where all change are applied to it.
+        brightness (int): level applied on each color of the led (0 - 255).
+        colors (dict): All available colors by combining RGB states.
+    """
     def __init__(self, pin=15, neopixels=4, brightness=255):
         self.pin = machine.Pin(pin, machine.Pin.OUT)
         self.neopixels = neopixels
