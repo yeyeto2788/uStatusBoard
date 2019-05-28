@@ -4,16 +4,16 @@ by changing the color of the led on the board.
 
 You can use a marker to write down the condition/status of anything you're monitoring.
 
-**Top view of the board**
+**Top view of the board (latest version)**
 
 <p align="center">
-<img src="./docs/images/bottom_v01.jpg" alt="Top View of the board"  width="300"/>
+<img src="./docs/images/bottom_v02.png" alt="Top View of the board"  width="300"/>
 </p>
 
-**Bottom view of the board**
+**Bottom view of the board (latest version)**
 
 <p align="center">
-<img src="./docs/images/top_v01.jpg" alt="Bottom view of the board"  width="300"/>
+<img src="./docs/images/top_v02.png" alt="Bottom view of the board"  width="300"/>
 </p>
 
 In order to use the board we will need a Wemos D1 mini (image below) which the board is soldered onto it.
