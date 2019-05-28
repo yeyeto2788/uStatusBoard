@@ -18,13 +18,14 @@ More info: https://github.com/yeyeto2788/uStatusBoard
 """
 import machine
 import neopixel
+import urandom
 
 
 class StatusBoard:
     def __init__(self, pin=15, neopixels=4, brightness=255):
         self.pin = machine.Pin(pin, machine.Pin.OUT)
         self.neopixels = neopixels
-        self.neostrip = neopixel.Neopixel(self.pin, self.neopixels)
+        self.neostrip = neopixel.NeoPixel(self.pin, self.neopixels)
         self.brightness = brightness
         self.colors = {
             'nocolor': [0, 0, 0],
@@ -51,18 +52,18 @@ class StatusBoard:
         """
         return [(c_value * self.brightness) for c_value in self.colors[color.lower()]]
 
-    def set_pixel_color(self, led, color):
+    def set_pixel_color(self, pixel, color):
         """
         Set given color based on the brightness level on a given board LED.
 
         Args:
-            led (int): Led position on the board.
+            pixel (int): Led position on the board.
             color (str): Name of the color.
 
         Returns:
             None.
         """
-        self.neostrip[led] = self._get_color_brightness(color)
+        self.neostrip[pixel] = self._get_color_brightness(color)
         self.neostrip.write()
 
     def clear_all(self):
@@ -88,4 +89,35 @@ class StatusBoard:
         """
         for pixel in range(self.neopixels):
             self.neostrip[pixel] = self._get_color_brightness(color)
+        self.neostrip.write()
+
+    def _get_random_int(self):
+        """
+        Generate a seudo random integer from 0 to 255.
+
+        Returns:
+            Integer generated.
+        """
+        int_return = urandom.getrandbits(8)
+        if 0 < int_return < 256:
+            return int_return
+        else:
+            return 0
+
+    def set_pixel_random_color(self, pixel):
+        """
+        Create a random color using the `_get_random_int` method for
+        red, green and blue.
+
+        Args:
+            pixel (int): Led position on the board.
+
+        Returns:
+            None.
+        """
+        r_color = self._get_random_int()
+        g_color = self._get_random_int()
+        b_color = self._get_random_int()
+        color = [r_color, g_color, b_color]
+        self.neostrip[pixel] = color
         self.neostrip.write()
