@@ -87,6 +87,8 @@ Now let's turn off all the leds
 
 If you want to know more about what methods the `StatusBoard` has head over to the [status_board.py](./status_board.py) script.
 
+#### If you want **more examples** head over the [examples folder](./examples/).
+
 ___
 ## Any feedback is highly appreciated! 
 
