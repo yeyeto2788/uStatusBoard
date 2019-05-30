@@ -27,7 +27,8 @@ class StatusBoard:
     Attributes:
         pin (machine.Pin): Instantiated on pin 15 by default.
         neopixels: Count of neopixels on the board (4 by default).
-        neostrip (neopixel.NeoPixel): Instance of NeoPixel where all change are applied to it.
+        neostrip (neopixel.NeoPixel): Instance of NeoPixel where all
+        change are applied to it.
         brightness (int): level applied on each color of the led (0 - 255).
         colors (dict): All available colors by combining RGB states.
     """
@@ -59,7 +60,8 @@ class StatusBoard:
         Returns:
             List with color at a brightness level.
         """
-        return [(c_value * self.brightness) for c_value in self.colors[color.lower()]]
+        return [(c_value * self.brightness) for c_value in
+                self.colors[color.lower()]]
 
     def set_pixel_color(self, pixel, color):
         """
@@ -88,7 +90,8 @@ class StatusBoard:
 
     def color_all(self, color):
         """
-        Set given color based on the brightness level on all LEDs on the board.
+        Set given color based on the brightness level on
+        all LEDs on the board.
 
         Args:
             color (str): Name of the color.
