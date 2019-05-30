@@ -1,3 +1,7 @@
+"""
+Example script using all available method on the `status_board.StatusBoard`
+for setting pixel colors and also it brightness.
+"""
 import time
 from status_board import StatusBoard
 

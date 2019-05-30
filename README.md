@@ -1,5 +1,5 @@
 # uStatusBoard
-The uStatusBoard is a board design to be used as simple notifier with 4 leds WS2812B (aka NeoPixels) to show the status
+The uStatusBoard is a board designed to be used as simple notifier with 4 leds WS2812B (aka NeoPixels) to show the status
 by changing the color of the led on the board.
 
 You can use a marker to write down the condition/status of anything you're monitoring.

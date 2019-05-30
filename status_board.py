@@ -133,3 +133,29 @@ class StatusBoard:
         color = [r_color, g_color, b_color]
         self.neostrip[pixel] = color
         self.neostrip.write()
+
+    def get_pixel_raw_color(self, pixel):
+        """
+        Return the value of the given pixel in [R, G, B] format.
+
+        Args:
+            pixel (int): Pixel number
+
+        Returns:
+            List the real color on the pixel.
+        """
+        return self.neostrip[pixel]
+
+    def set_pixel_raw_color(self, pixel, color):
+        """
+        Set pixel color to a given color [R, G, B] format.
+
+        Args:
+            pixel (int): Pixel number
+            color (list): Color in [R, G, B] format.
+
+        Returns:
+            None.
+        """
+        self.neostrip[pixel] = color
+        self.neostrip.write()

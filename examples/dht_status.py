@@ -1,3 +1,21 @@
+"""
+Example script using a DHT11 sensor to read the temperature
+and humidity.
+
+The temperature and the humidity are measured every 5 mins
+and based on that measurement represent the value of them on
+the board using a thresholds.
+
+If temperature is above `max_temp` the led will light up `red`
+If temperature is below `min_temp` the led will light up `blue`
+If temperature is between `min_temp` and `max_temp` the led will
+light up `green`
+
+For humidity if the value is between `min_hum` and `max_hum` will
+light up another led in `green` otherwise `red`
+
+"""
+
 import dht
 import time
 import machine
