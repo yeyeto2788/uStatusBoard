@@ -1,3 +1,11 @@
+"""
+Simple script to set build status on uStatusBoard
+builtin leds.
+
+Based on the status, the led will light up green, red
+or yellow in order to show each build status.
+
+"""
 import time
 try:
     import urequests as requests
@@ -8,7 +16,19 @@ from status_board import StatusBoard
 
 
 class Jenkins:
+    """
+    Class to handle all needed operations to get the
+    build status and color assigned to it.
 
+    Attributes:
+        last_build: URL to fetch last build regardless its status.
+        status_color: Match between color and statuses.
+        user: Jenkins username.
+        psswd: Password used to authenticate on Jenkins.
+        project: Job on Jenkins to retrieve the status from.
+        host: IP:port to communicate with Jenkins.
+
+    """
     last_build = "http://{auth}{host}{job}/lastBuild/api/json"
     status_color = {
         "FAILURE": 'red',
@@ -27,10 +47,11 @@ class Jenkins:
 
     def set_authorization(self, user, password):
         """
+        Set the value for the authorization part of the url.
 
         Args:
-            user:
-            password:
+            user (str): Username.
+            password (str): Password.
 
         Returns:
             None.
@@ -44,6 +65,7 @@ class Jenkins:
 
     def _set_url(self):
         """
+        Add values on the URL in order to retrieve data.
 
         Returns:
             None.
@@ -52,6 +74,7 @@ class Jenkins:
 
     def get_status_color(self, status):
         """
+        Based on a status return its color assigned.
 
         Args:
             status (str): status to look the color for.
@@ -63,7 +86,8 @@ class Jenkins:
 
     def get_build_status(self):
         """
-
+        Make an HTTP request to jenkins API and retrieve the build
+        information to look for the build status on it.
 
         Returns:
             String with the `result` attribute on response.
