@@ -32,20 +32,21 @@ class StatusBoard:
         brightness (int): level applied on each color of the led (0 - 255).
         colors (dict): All available colors by combining RGB states.
     """
+
     def __init__(self, pin=15, neopixels=4, brightness=255):
         self.pin = machine.Pin(pin, machine.Pin.OUT)
         self.neopixels = neopixels
         self.neostrip = neopixel.NeoPixel(self.pin, self.neopixels)
         self.brightness = brightness
         self.colors = {
-            'nocolor': [0, 0, 0],
-            'blue': [0, 0, 1],
-            'green': [0, 1, 0],
-            'cyan': [0, 1, 1],
-            'red': [1, 0, 0],
-            'magenta': [1, 0, 1],
-            'yellow': [1, 1, 0],
-            'white': [1, 1, 1],
+            "nocolor": [0, 0, 0],
+            "blue": [0, 0, 1],
+            "green": [0, 1, 0],
+            "cyan": [0, 1, 1],
+            "red": [1, 0, 0],
+            "magenta": [1, 0, 1],
+            "yellow": [1, 1, 0],
+            "white": [1, 1, 1],
         }
         self.clear_all()
 
@@ -60,8 +61,7 @@ class StatusBoard:
         Returns:
             List with color at a brightness level.
         """
-        return [(c_value * self.brightness) for c_value in
-                self.colors[color.lower()]]
+        return [(c_value * self.brightness) for c_value in self.colors[color.lower()]]
 
     def set_pixel_color(self, pixel, color):
         """

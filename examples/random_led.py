@@ -6,8 +6,9 @@ In this script we are using a button connected to GPIO 0 on one end
 and the other end is connected to GND.
 """
 import time
-import urandom
+
 import machine
+import urandom
 
 from status_board import StatusBoard
 

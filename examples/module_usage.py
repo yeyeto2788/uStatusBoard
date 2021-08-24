@@ -3,6 +3,7 @@ Example script using all available method on the `status_board.StatusBoard`
 for setting pixel colors and also it brightness.
 """
 import time
+
 from status_board import StatusBoard
 
 # Modify the variable value below
@@ -24,11 +25,11 @@ def demo(board):
         time.sleep(sleep_time)
 
     # Apply different colors to each LED on the board.
-    print('Setting each pixel a different color.')
-    board.set_pixel_color(0, 'blue')
-    board.set_pixel_color(1, 'red')
-    board.set_pixel_color(2, 'green')
-    board.set_pixel_color(3, 'yellow')
+    print("Setting each pixel a different color.")
+    board.set_pixel_color(0, "blue")
+    board.set_pixel_color(1, "red")
+    board.set_pixel_color(2, "green")
+    board.set_pixel_color(3, "yellow")
     time.sleep(sleep_time)
     board.clear_all()
 
@@ -79,4 +80,3 @@ def main():
     board.set_pixel_random_color(3)
     time.sleep(sleep_time * 2)
     board.clear_all()
-

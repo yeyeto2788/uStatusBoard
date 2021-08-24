@@ -7,6 +7,7 @@ or yellow in order to show each build status.
 
 """
 import time
+
 try:
     import urequests as requests
 except ImportError:
@@ -29,17 +30,18 @@ class Jenkins:
         host: IP:port to communicate with Jenkins.
 
     """
+
     last_build = "http://{auth}{host}{job}/lastBuild/api/json"
     status_color = {
-        "FAILURE": 'red',
-        "SUCCESS": 'yellow',
-        "UNSTABLE": 'green',
+        "FAILURE": "red",
+        "SUCCESS": "yellow",
+        "UNSTABLE": "green",
     }
 
     def __init__(self, host, user, password, job):
         self.user = user
         self.psswd = password
-        self.auth = ''
+        self.auth = ""
         self.host = host
         self.project = job
         self.set_authorization(user, password)
@@ -57,11 +59,9 @@ class Jenkins:
             None.
         """
         if user is not None and password is not None:
-            self.auth = "{user}:{password}@".format(
-                user=user, password=password
-            )
+            self.auth = "{user}:{password}@".format(user=user, password=password)
         else:
-            self.auth = ''
+            self.auth = ""
 
     def _set_url(self):
         """
@@ -70,7 +70,9 @@ class Jenkins:
         Returns:
             None.
         """
-        self.url = self.last_build.format(auth=self.auth, host=self.host, job=self.project)
+        self.url = self.last_build.format(
+            auth=self.auth, host=self.host, job=self.project
+        )
 
     def get_status_color(self, status):
         """
@@ -96,27 +98,25 @@ class Jenkins:
 
         payload = ""
         headers = {
-            'Connection': "keep-alive",
-            'Content-Type': "application/json",
-            'cache-control': "no-cache",
-            }
-        response = requests.get(self.url, data=payload, headers=headers, params=querystring)
-        data = response.json()['result']
+            "Connection": "keep-alive",
+            "Content-Type": "application/json",
+            "cache-control": "no-cache",
+        }
+        response = requests.get(
+            self.url, data=payload, headers=headers, params=querystring
+        )
+        data = response.json()["result"]
         response.close()
         return data
 
 
 board = StatusBoard()
-USER = 'username'
-PASS = 'password'
+USER = "username"
+PASS = "password"
 ENDPOINT = '"jenkins.com:9090/"'
 
-jenkins_project1 = Jenkins(
-    host=ENDPOINT, user=USER, password=PASS, job="job/project1"
-)
-jenkins_project2 = Jenkins(
-    host=ENDPOINT, user=USER, password=PASS, job="job/project2"
-)
+jenkins_project1 = Jenkins(host=ENDPOINT, user=USER, password=PASS, job="job/project1")
+jenkins_project2 = Jenkins(host=ENDPOINT, user=USER, password=PASS, job="job/project2")
 
 while True:
     project1_status = jenkins_project1.get_build_status()

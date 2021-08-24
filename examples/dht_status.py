@@ -16,8 +16,9 @@ light up another led in `green` otherwise `red`
 
 """
 
-import dht
 import time
+
+import dht
 import machine
 
 from status_board import StatusBoard
@@ -46,22 +47,22 @@ def main():
 
         # If temperature is between min and max temp it is all good (green)
         if min_temp < temperature < max_temp:
-            board.set_pixel_color(0, 'green')
+            board.set_pixel_color(0, "green")
         # If temperature is higher than max temp it is hot (red)
         elif temperature < max_temp:
-            board.set_pixel_color(0, 'red')
+            board.set_pixel_color(0, "red")
         # If temperature is lower than min temp it is cold (blue)
         else:
-            board.set_pixel_color(0, 'blue')
+            board.set_pixel_color(0, "blue")
 
         # If humidity is between min and max it is all good (green)
         if min_hum < humidity < max_hum:
-            board.set_pixel_color(2, 'green')
+            board.set_pixel_color(2, "green")
         # If humidity is higher than max it bad for us and potentially
         # fuel for growth of harmful bacteria (red) and if it's lower
         # we can get our eyes dry.
         else:
-            board.set_pixel_color(2, 'red')
+            board.set_pixel_color(2, "red")
 
         # Whit the statement above we don't do readings too often.
         time.sleep(sleep_time)
