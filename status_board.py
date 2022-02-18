@@ -90,8 +90,7 @@ class StatusBoard:
 
     def color_all(self, color):
         """
-        Set given color based on the brightness level on
-        all LEDs on the board.
+        Set given color based on the brightness level on all LEDs on the board.
 
         Args:
             color (str): Name of the color.
